@@ -1,0 +1,42 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"email": "admin@finance.com",
+			"password": "admin123",
+			"name": "Admin User",
+			"role": "admin",
+			"permissions": [
+				"approve_transfers",
+				"manage_roles",
+				"view_transactions",
+				"export_transactions",
+				"review_transactions",
+				"check_balance",
+				"make_transfers",
+				"manage_goals"
+			]
+		},
+		{
+			"id": 2,
+			"email": "accountant@finance.com",
+			"password": "account123",
+			"name": "Accountant User",
+			"role": "accountant",
+			"permissions": [
+				"view_transactions",
+				"export_transactions",
+				"review_transactions",
+				"check_balance"
+			]
+		},
+		{
+			"id": 3,
+			"email": "user@finance.com",
+			"password": "user123",
+			"name": "Regular User",
+			"role": "user",
+			"permissions": ["check_balance", "make_transfers", "manage_goals"]
+		}
+	]
+}
