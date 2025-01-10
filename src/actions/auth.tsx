@@ -1,3 +1,8 @@
+"use server";
+
+import type { SignInValues } from "@/lib/defitions";
+import { redirect } from "next/navigation";
+
 type User = {
 	id: number;
 	email: string;
@@ -7,14 +12,14 @@ type User = {
 	permissions: string[];
 };
 
-export async function signIn(email: string, password: string) {
+export async function signIn({ email, password }: SignInValues) {
 	const response = await fetch("http://localhost:3001/users");
 	const users = (await response.json()) as User[];
 	const user = users.find((u) => u.email === email && u.password === password);
 
-	if (!user) {
-		return null;
+	if (user) {
+		redirect("/dashboard");
 	}
 
-	return user;
+	throw new Error("Invalid credentials");
 }
