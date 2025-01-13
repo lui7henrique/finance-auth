@@ -2,41 +2,58 @@
 	"users": [
 		{
 			"id": 1,
-			"email": "admin@finance.com",
-			"password": "admin123",
-			"name": "Admin User",
+			"email": "admin@demo.com",
+			"password": "kP9#mN2$vL8@jH4xQ5",
+			"name": "System Administrator",
 			"role": "admin",
 			"permissions": [
-				"approve_transfers",
-				"manage_roles",
-				"view_transactions",
-				"export_transactions",
-				"review_transactions",
-				"check_balance",
-				"make_transfers",
-				"manage_goals"
+				"manage_users",
+				"delete_users",
+				"configure_products",
+				"view_platform_analytics",
+				"manage_system_settings"
 			]
 		},
 		{
 			"id": 2,
-			"email": "accountant@finance.com",
-			"password": "account123",
-			"name": "Accountant User",
-			"role": "accountant",
+			"email": "advisor@demo.com",
+			"password": "rT7$wY9#pM5&nB3cX6",
+			"name": "Financial Advisor",
+			"role": "advisor",
 			"permissions": [
-				"view_transactions",
-				"export_transactions",
-				"review_transactions",
-				"check_balance"
+				"view_assigned_portfolios",
+				"recommend_products",
+				"communicate_with_clients",
+				"view_client_profiles",
+				"access_market_data"
 			]
 		},
 		{
 			"id": 3,
-			"email": "user@finance.com",
-			"password": "user123",
-			"name": "Regular User",
-			"role": "user",
-			"permissions": ["check_balance", "make_transfers", "manage_goals"]
+			"email": "investor@demo.com",
+			"password": "hK4$fG8#dL2@sA9mE5",
+			"name": "Individual Investor",
+			"role": "investor",
+			"permissions": [
+				"view_own_portfolio",
+				"execute_transactions",
+				"manage_investments",
+				"view_personal_returns",
+				"set_investment_preferences"
+			]
+		},
+		{
+			"id": 4,
+			"email": "guest@demo.com",
+			"password": "bN6#zX4$qW7@vR2yU9",
+			"name": "Guest User",
+			"role": "guest",
+			"permissions": [
+				"view_market_trends",
+				"access_investment_simulator",
+				"view_public_content",
+				"access_educational_resources"
+			]
 		}
 	]
 }
