@@ -49,6 +49,8 @@ export const verifySession = async () => {
 	if (session) {
 		return session;
 	}
+
+	return null;
 };
 
 export async function deleteSession() {

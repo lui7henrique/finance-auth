@@ -5,12 +5,14 @@ import { createSession, deleteSession } from "@/lib/session";
 import { sleep } from "@/lib/utils";
 import { redirect } from "next/navigation";
 
+export type UserRole = "admin" | "advisor" | "investor" | "guest";
+
 export type User = {
 	id: number;
 	email: string;
 	password: string;
 	name: string;
-	role: string;
+	role: UserRole;
 	permissions: string[];
 };
 

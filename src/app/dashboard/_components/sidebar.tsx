@@ -1,3 +1,8 @@
+"use client";
+
+import { signOut } from "@/actions/auth";
+import { authAtom } from "@/store/auth";
+import { useAtomValue } from "jotai";
 import type { User } from "@/actions/auth";
 import {
 	Sidebar,
@@ -19,10 +24,19 @@ import {
 	DollarSignIcon,
 	GraduationCapIcon,
 	LineChartIcon,
+	LogOutIcon,
 	UserIcon,
 	UsersIcon,
 } from "lucide-react";
 import Link from "next/link";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 
 type NavigationItem = {
 	label: string;
@@ -92,14 +106,11 @@ const navigationItems: NavigationItem[] = [
 	},
 ];
 
-type AppSidebarProps = {
-	userRole: User["role"];
-	signOut: () => Promise<void>;
-};
+export function AppSidebar() {
+	const { user } = useAtomValue(authAtom);
 
-export function AppSidebar({ userRole, signOut }: AppSidebarProps) {
 	const filteredItems = navigationItems.filter((item) =>
-		item.role.includes(userRole),
+		item.role.includes(user?.role ?? "guest"),
 	);
 
 	return (
@@ -124,13 +135,26 @@ export function AppSidebar({ userRole, signOut }: AppSidebarProps) {
 					</SidebarGroupContent>
 				</SidebarGroup>
 			</SidebarContent>
+
 			<SidebarFooter>
 				<SidebarMenu>
 					<SidebarMenuItem>
-						<SidebarMenuButton onClick={signOut}>
-							<UserIcon />
-							<span>Logout</span>
-						</SidebarMenuButton>
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<SidebarMenuButton onClick={signOut}>
+									<UserIcon />
+									<span>{user?.name}</span>
+									<Badge variant="outline">{user?.role}</Badge>
+								</SidebarMenuButton>
+							</DropdownMenuTrigger>
+
+							<DropdownMenuContent>
+								<DropdownMenuItem onClick={signOut}>
+									<LogOutIcon />
+									<span>Logout</span>
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
 					</SidebarMenuItem>
 				</SidebarMenu>
 			</SidebarFooter>
