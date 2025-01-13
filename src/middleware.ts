@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { decrypt } from "@/lib/session";
-import { unauthorized } from "next/dist/client/components/navigation";
 
 type RoutePermissions = {
 	[key: string]: string[];
